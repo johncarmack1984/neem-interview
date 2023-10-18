@@ -23,8 +23,8 @@ function Form() {
     { faveColor: "bg-[#EB8F24]", covered: false, name: "Rebecca Bell", preferredName: "Becca", insurance: "", id: 1111111111, dependent: true },
  ];
   return (
-    <div className="container mx-auto px-4 py-8">
-      <form className="max-w-32 m-4 flex flex-col space-y-6 rounded-md border border-gray-300 p-4">
+    <div className="container mx-auto py-8 sm:px-4">
+      <form className="max-w-32 flex flex-col space-y-6 rounded-md border border-gray-300 p-4 md:m-4">
         <div className="flex items-center justify-between">
           <h1 className="text-2xl font-medium">Patient Insurance</h1>
           <Button aria-label="Close" variant="ghost">
