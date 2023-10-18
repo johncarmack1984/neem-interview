@@ -92,8 +92,8 @@ function Form() {
           value={subscriber.toString()}
           onValueChange={(e) => setSubscriber(parseInt(e))}
         >
-          <div className="grid grid-cols-5 grid-flow-row-dense gap-2 font-light text-xs text-left">
-            <div className="max-w-fit">
+          <div className="grid grid-cols-5 gap-2 font-light text-xs text-left">
+            <div>
               <span className="mr-1">Covered</span>
               <TooltipProvider>
                 <Tooltip>
@@ -106,10 +106,10 @@ function Form() {
                 </Tooltip>
               </TooltipProvider>
             </div>
-            <div className="">Name</div>
+            <div>Name</div>
             <div className="text-center">Subscriber</div>
-            <div className="">Insurance</div>
-            <div className="">ID</div>
+            <div>Insurance</div>
+            <div>ID</div>
             {household.map((member, i) => (
               <HouseholdMember key={i} index={i} member={member} />
             ))}
@@ -152,7 +152,8 @@ const HouseholdMember = ({
         onCheckedChange={() => setCovered(!covered)}
         className="text-center justify-self-center self-center"
       />
-      <div className="flex flex-wrap justify-start items-center gap-2">
+
+      <div className="flex flex-nowrap justify-start items-center gap-2">
         <Avatar
           className={cn(
             member.faveColor,
