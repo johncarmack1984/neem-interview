@@ -31,8 +31,8 @@ function Form() {
             <X />
           </Button>
         </div>
-        <div className="space-y-4 text-2xl font-light tracking-wide">
-          <div className="space-y-3">
+        <div className="space-y-2 text-2xl font-light tracking-wide">
+          <div className="space-y-2">
             <div className="flex justify-between">
               <Label
                 className="text-base font-medium"
@@ -82,10 +82,18 @@ function Form() {
           </div>
         </div>
         <div className="flex gap-4">
-          <Button disabled className="w-full font-normal" variant="outline">
+          <Button
+            disabled
+            className="w-full py-6 font-normal"
+            variant="outline"
+          >
             <ChevronLeft size={16} className="mr-2" /> Insurance details
           </Button>
-          <Button disabled className="w-full font-normal" variant="outline">
+          <Button
+            disabled
+            className="w-full py-6 font-normal"
+            variant="outline"
+          >
             <ChevronLeft size={16} className="mr-2" />
             Coverage and Deductible
           </Button>
@@ -127,7 +135,12 @@ function Form() {
               +Add new member
             </span>
           </div>
-          <Input id="household-member" placeholder="Search..." required />
+          <Input
+            id="household-member"
+            placeholder="Search..."
+            Icon={SearchIcon}
+            required
+          />
         </div>
         <Button
           className="w-[129px] self-end whitespace-nowrap bg-[#70C4BB] text-white"
