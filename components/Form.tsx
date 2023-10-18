@@ -101,7 +101,7 @@ function Form() {
             Coverage and Deductible
           </Button>
         </div>
-        <h2 className="text-lg font-medium">Household</h2>
+        <h2 className="text-md font-medium">Household</h2>
         <RadioGroup
           value={subscriber.toString()}
           onValueChange={(e) => setSubscriber(parseInt(e))}
