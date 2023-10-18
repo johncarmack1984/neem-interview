@@ -156,9 +156,12 @@ function Form() {
                     />
                   </div>
                   <div className="flex justify-center items-center">
-                    <Select>
+                    <Select
+                      value={member.insurance}
+                      disabled={member.insurance.length < 1}
+                    >
                       <SelectTrigger>
-                        <SelectValue placeholder="Primary" />
+                        <SelectValue />
                       </SelectTrigger>
                       <SelectContent>
                         <SelectGroup>
