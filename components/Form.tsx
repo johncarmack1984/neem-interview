@@ -46,6 +46,7 @@ function Form() {
               id="search-insurance"
               placeholder="Search insurance"
               className="tracking-wide"
+              onChange={() => {}}
               required
               Icon={SearchIcon}
             />
@@ -55,6 +56,7 @@ function Form() {
             <Input
               id="employer"
               value="Company F"
+              onChange={() => {}}
               placeholder="Employer"
               Icon={X}
               required
@@ -65,6 +67,7 @@ function Form() {
             <Input
               id="carrier"
               value="Delta Insurance"
+              onChange={() => {}}
               placeholder="Carrier"
               Icon={X}
               required
@@ -75,6 +78,7 @@ function Form() {
             <Input
               id="plan"
               value="Dental Primary"
+              onChange={() => {}}
               placeholder="Plan"
               Icon={X}
               required

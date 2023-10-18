@@ -26,6 +26,10 @@ const HouseholdMember = ({
   const initials = firstName[0] + lastName[0];
   const [covered, setCovered] = useState(member.covered);
   const [insurance, setInsurance] = useState(member.insurance);
+  const insuranceOptions = {
+    primary: "Primary",
+    secondary: "Secondary",
+  };
   return (
     <>
       <Checkbox
@@ -58,7 +62,7 @@ const HouseholdMember = ({
         <Select
           value={insurance}
           disabled={member.dependent}
-          onValueChange={() => setInsurance}
+          onValueChange={(e) => setInsurance(e)}
         >
           <SelectTrigger>
             <SelectValue />
@@ -66,8 +70,13 @@ const HouseholdMember = ({
           <SelectContent>
             <SelectGroup>
               <SelectLabel>Options</SelectLabel>
-              <SelectItem value="primary">Primary</SelectItem>
-              <SelectItem value="secondary">Secondary</SelectItem>
+              {Object.entries(insuranceOptions).map(([k, v], i) => {
+                return (
+                  <SelectItem key={i} value={k}>
+                    {v}
+                  </SelectItem>
+                );
+              })}
             </SelectGroup>
           </SelectContent>
         </Select>
