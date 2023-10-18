@@ -110,64 +110,9 @@ function Form() {
             <div className="text-center">Subscriber</div>
             <div className="">Insurance</div>
             <div className="">ID</div>
-            {household.map((member, i) => {
-              const [firstName, lastName] = member.name.split(" ");
-              const initials = firstName[0] + lastName[0];
-              return (
-                <Fragment key={i}>
-                  <Checkbox
-                    checked={member.covered}
-                    onChange={() => (member.covered = !member.covered)}
-                    className="text-center justify-self-center self-center"
-                  />
-                  <div className="flex flex-wrap justify-start items-center gap-2">
-                    <Avatar
-                      className={cn(
-                        member.faveColor,
-                        "rounded-full p-1 text-xs text-white inline"
-                      )}
-                    >
-                      <AvatarFallback>{initials}</AvatarFallback>
-                    </Avatar>
-                    <span className="font-light capitalize whitespace-nowrap">
-                      {member.name}
-                    </span>
-                    <span className="text-sm text-zinc-500 dark:text-zinc-400 font-light">
-                      ({member.preferredName})
-                    </span>
-                  </div>
-
-                  <RadioGroupItem
-                    value={i.toString()}
-                    className="data-[state=checked]:text-[#70C4BB] border-[#70C4BB] border-2 h-5 w-5 text-center justify-self-center self-center"
-                  />
-
-                  <div className="flex justify-center items-center">
-                    <Select
-                      value={member.insurance}
-                      disabled={member.dependent}
-                    >
-                      <SelectTrigger>
-                        <SelectValue />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectGroup>
-                          <SelectLabel>Options</SelectLabel>
-                          <SelectItem value="primary">Primary</SelectItem>
-                          <SelectItem value="secondary">Secondary</SelectItem>
-                        </SelectGroup>
-                      </SelectContent>
-                    </Select>
-                  </div>
-                  <div className="flex justify-center items-center">
-                    <Input
-                      placeholder="Ins. ID/SSN"
-                      disabled={member.dependent}
-                    />
-                  </div>
-                </Fragment>
-              );
-            })}
+            {household.map((member, i) => (
+              <HouseholdMember key={i} index={i} member={member} />
+            ))}
           </div>
         </RadioGroup>
         <div className="space-y-2">
@@ -188,42 +133,47 @@ function Form() {
   );
 }
 
-const HouseHoldMember = ({
-  covered,
-  faveColor,
-  name,
-  preferredName,
-  insurance,
-  id,
-}: HouseHoldMember) => {
-  const [firstName, lastName] = name.split(" ");
+const HouseholdMember = ({
+  member,
+  index,
+}: {
+  member: HouseHoldMember;
+  index: number;
+}) => {
+  const [firstName, lastName] = member.name.split(" ");
   const initials = firstName[0] + lastName[0];
+  const [covered, setCovered] = useState(member.covered);
   return (
-    <tr className="align-middle">
-      <td className="text-center align-middle">
-        <Checkbox />
-      </td>
-      <td className="flex items-center gap-2" valign="middle">
+    <>
+      <Checkbox
+        checked={covered}
+        onCheckedChange={() => setCovered(!covered)}
+        className="text-center justify-self-center self-center"
+      />
+      <div className="flex flex-wrap justify-start items-center gap-2">
         <Avatar
-          className={cn(faveColor, "rounded-full p-1 text-xs text-white")}
+          className={cn(
+            member.faveColor,
+            "rounded-full p-1 text-xs text-white inline"
+          )}
         >
           <AvatarFallback>{initials}</AvatarFallback>
         </Avatar>
-        <div className="flex items-center gap-1">
-          <span className="capitalize">{name}</span>
-          <span className="text-sm text-zinc-500 dark:text-zinc-400">
-            {" "}
-            ({preferredName})
-          </span>
-        </div>
-      </td>
-      <td className="pr-4 py-2 text-center">
-        <input type="radio" />
-      </td>
-      <td className="pr-4 py-2">
-        <Select>
+        <span className="font-light capitalize whitespace-nowrap">
+          {member.name}
+        </span>
+        <span className="text-sm text-zinc-500 dark:text-zinc-400 font-light">
+          ({member.preferredName})
+        </span>
+      </div>
+      <RadioGroupItem
+        value={index.toString()}
+        className="data-[state=checked]:text-[#70C4BB] border-[#70C4BB] border-2 h-5 w-5 text-center justify-self-center self-center"
+      />
+      <div className="flex justify-center items-center">
+        <Select value={member.insurance} disabled={member.dependent}>
           <SelectTrigger>
-            <SelectValue placeholder="Primary" />
+            <SelectValue />
           </SelectTrigger>
           <SelectContent>
             <SelectGroup>
@@ -233,11 +183,11 @@ const HouseHoldMember = ({
             </SelectGroup>
           </SelectContent>
         </Select>
-      </td>
-      <td className="pr-4 py-2">
-        <Input placeholder="Ins. ID/SSN" />
-      </td>
-    </tr>
+      </div>
+      <div className="flex justify-center items-center">
+        <Input placeholder="Ins. ID/SSN" disabled={member.dependent} />
+      </div>
+    </>
   );
 };
 
