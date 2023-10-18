@@ -1,40 +1,18 @@
-"use client";
+import { useState } from "react";
+import InformationCircleSolid from "@/icons/information-circle-solid";
+import { ChevronLeft, X } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
-import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
-import { Checkbox } from "@/components/ui/checkbox";
-import {
-  SelectValue,
-  SelectTrigger,
-  SelectLabel,
-  SelectItem,
-  SelectGroup,
-  SelectContent,
-  Select,
-} from "@/components/ui/select";
+import { Label } from "@/components/ui/label";
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { Avatar, AvatarFallback } from "@radix-ui/react-avatar";
-import InformationCircleSolid from "@/icons/information-circle-solid";
-import { cn } from "@/lib/utils";
-import { Fragment, useEffect, useState } from "react";
-import { RadioGroup, RadioGroupItem } from "./ui/radio-group";
-import { ChevronLeft, X } from "lucide-react";
-
-interface HouseHoldMember {
-  faveColor: string;
-  covered: boolean;
-  name: string;
-  preferredName: string;
-  insurance: string;
-  id: number;
-  dependent: boolean;
-}
+import HouseholdMember from "./household-member";
+import { RadioGroup } from "./ui/radio-group";
 
 function Form() {
   const [subscriber, setSubscriber] = useState<number>(0);
@@ -45,15 +23,15 @@ function Form() {
     { faveColor: "bg-[#EB8F24]", covered: false, name: "Rebecca Bell", preferredName: "Becca", insurance: "", id: 1111111111, dependent: true },
  ];
   return (
-    <div className="container mx-auto py-8 px-4">
-      <form className="flex flex-col space-y-6 max-w-32 border border-gray-300 p-4 m-4 rounded-md">
+    <div className="container mx-auto px-4 py-8">
+      <form className="max-w-32 m-4 flex flex-col space-y-6 rounded-md border border-gray-300 p-4">
         <div className="flex items-center justify-between">
           <h1 className="text-2xl font-medium">Patient Insurance</h1>
           <Button aria-label="Close" variant="ghost">
             <X />
           </Button>
         </div>
-        <div className="space-y-4 font-light tracking-wide text-2xl">
+        <div className="space-y-4 text-2xl font-light tracking-wide">
           <div className="space-y-3">
             <div className="flex justify-between">
               <Label htmlFor="search-insurance">Insurance</Label>
@@ -92,7 +70,7 @@ function Form() {
           value={subscriber.toString()}
           onValueChange={(e) => setSubscriber(parseInt(e))}
         >
-          <div className="grid grid-cols-5 gap-2 font-light text-xs text-left">
+          <div className="grid grid-cols-5 gap-2 text-left text-xs font-light">
             <div>
               <span className="mr-1">Covered</span>
               <TooltipProvider>
@@ -118,14 +96,14 @@ function Form() {
         <div className="space-y-2">
           <div className="flex justify-between">
             <Label htmlFor="household-member">Household member</Label>
-            <span className="text-xs text-muted-foreground font-light">
+            <span className="text-xs font-light text-muted-foreground">
               +Add new member
             </span>
           </div>
           <Input id="household-member" placeholder="Search..." required />
         </div>
         <Button
-          className="bg-[#70C4BB] w-[129px] whitespace-nowrap self-end text-white"
+          className="w-[129px] self-end whitespace-nowrap bg-[#70C4BB] text-white"
           type="submit"
         >
           Save and Close
@@ -134,72 +112,5 @@ function Form() {
     </div>
   );
 }
-
-const HouseholdMember = ({
-  member,
-  index,
-}: {
-  member: HouseHoldMember;
-  index: number;
-}) => {
-  const [firstName, lastName] = member.name.split(" ");
-  const initials = firstName[0] + lastName[0];
-  const [covered, setCovered] = useState(member.covered);
-  const [insurance, setInsurance] = useState(member.insurance);
-  return (
-    <>
-      <Checkbox
-        checked={covered}
-        onCheckedChange={() => setCovered(!covered)}
-        className="text-center justify-self-center self-center"
-      />
-
-      <div className="flex flex-nowrap justify-start items-center gap-2">
-        <Avatar
-          className={cn(
-            member.faveColor,
-            "rounded-full p-1 text-xs text-white inline"
-          )}
-        >
-          <AvatarFallback>{initials}</AvatarFallback>
-        </Avatar>
-        <span className="font-light text-sm capitalize whitespace-nowrap">
-          {member.name}
-        </span>
-        <span className="text-sm text-zinc-500 dark:text-zinc-400">
-          ({member.preferredName})
-        </span>
-      </div>
-      <RadioGroupItem
-        value={index.toString()}
-        className="data-[state=checked]:text-[#70C4BB] border-[#70C4BB] border-2 text-center justify-self-center self-center"
-      />
-      <div className="flex justify-center items-center">
-        <Select
-          value={insurance}
-          disabled={member.dependent}
-          onValueChange={() => setInsurance}
-        >
-          <SelectTrigger>
-            <SelectValue />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectGroup>
-              <SelectLabel>Options</SelectLabel>
-              <SelectItem value="primary">Primary</SelectItem>
-              <SelectItem value="secondary">Secondary</SelectItem>
-            </SelectGroup>
-          </SelectContent>
-        </Select>
-      </div>
-      <div className="flex justify-center items-center">
-        <Input
-          placeholder={member.dependent ? "" : "Ins. ID/SSN"}
-          disabled={member.dependent}
-        />
-      </div>
-    </>
-  );
-};
 
 export default Form;
