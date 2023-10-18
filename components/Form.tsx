@@ -22,7 +22,7 @@ import {
 import { Avatar, AvatarFallback } from "@radix-ui/react-avatar";
 import InformationCircleSolid from "@/icons/information-circle-solid";
 import { cn } from "@/lib/utils";
-import { useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 
 interface HouseHoldMember {
   faveColor: string;
@@ -102,87 +102,79 @@ function Form() {
           </Button>
         </div>
         <h2 className="text-xl font-semibold">Household</h2>
-        <div className="">
-          <table className="w-full whitespace-nowrap">
-            <thead>
-              <tr className="text-xs mb-2">
-                <th className="font-normal text-left pr-2">
-                  <span className="mr-1">Covered</span>
-                  <TooltipProvider>
-                    <Tooltip>
-                      <TooltipTrigger>
-                        <InformationCircleSolid />
-                      </TooltipTrigger>
-                      <TooltipContent>
-                        <p>Is this person covered?</p>
-                      </TooltipContent>
-                    </Tooltip>
-                  </TooltipProvider>
-                </th>
-                <th className="font-normal text-left pr-2">Name</th>
-                <th className="font-normal text-left pr-2">Subscriber</th>
-                <th className="font-normal text-left pr-2">Insurance</th>
-                <th className="font-normal text-left pr-2">ID</th>
-              </tr>
-            </thead>
-            <tbody className="">
-              {household.map((member, i) => {
-                const [firstName, lastName] = member.name.split(" ");
-                const initials = firstName[0] + lastName[0];
-                return (
-                  <tr key={i} className="align-middle">
-                    <td className="text-center align-middle">
-                      <Checkbox
-                        checked={member.covered}
-                        onChange={() => (member.covered = !member.covered)}
-                      />
-                    </td>
-                    <td className="flex items-center gap-2 pt-2">
-                      <Avatar
-                        className={cn(
-                          member.faveColor,
-                          "rounded-full p-1 text-xs text-white"
-                        )}
-                      >
-                        <AvatarFallback>{initials}</AvatarFallback>
-                      </Avatar>
-                      <div className="flex items-center gap-1">
-                        <span className="capitalize">{member.name}</span>
-                        <span className="text-sm text-zinc-500 dark:text-zinc-400">
-                          {" "}
-                          ({member.preferredName})
-                        </span>
-                      </div>
-                    </td>
-                    <td className="pr-4 text-center">
-                      <input
-                        type="radio"
-                        checked={subscriber === i}
-                        onChange={() => setSubscriber(i)}
-                      />
-                    </td>
-                    <td className="pr-4 py-2">
-                      <Select>
-                        <SelectTrigger>
-                          <SelectValue placeholder="Primary" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectGroup>
-                            <SelectLabel>Options</SelectLabel>
-                            <SelectItem value="primary">Primary</SelectItem>
-                            <SelectItem value="secondary">Secondary</SelectItem>
-                          </SelectGroup>
-                        </SelectContent>
-                      </Select>
-                    </td>
-                    <td className="pr-4">
-                      <Input placeholder="Ins. ID/SSN" />
-                    </td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
+        <div className="grid grid-cols-5 gap-2 font-normal text-left">
+          <div className="">
+            <span className="mr-1">Covered</span>
+            <TooltipProvider>
+              <Tooltip>
+                <TooltipTrigger>
+                  <InformationCircleSolid />
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>Is this person covered?</p>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
+          </div>
+          <div className="">Name</div>
+          <div className="text-center">Subscriber</div>
+          <div className="">Insurance</div>
+          <div className="">ID</div>
+
+          {household.map((member, i) => {
+            const [firstName, lastName] = member.name.split(" ");
+            const initials = firstName[0] + lastName[0];
+            return (
+              <Fragment key={i}>
+                <div className="flex justify-center items-center">
+                  <Checkbox
+                    checked={member.covered}
+                    onChange={() => (member.covered = !member.covered)}
+                  />
+                </div>
+                <div className="flex flex-wrap justify-start items-center gap-2">
+                  <Avatar
+                    className={cn(
+                      member.faveColor,
+                      "rounded-full p-1 text-xs text-white"
+                    )}
+                  >
+                    <AvatarFallback>{initials}</AvatarFallback>
+                  </Avatar>
+                  <span className="capitalize whitespace-nowrap">
+                    {member.name}
+                  </span>
+                  <span className="text-sm text-zinc-500 dark:text-zinc-400 font-light">
+                    ({member.preferredName})
+                  </span>
+                </div>
+                <div className="flex justify-center items-center">
+                  <input
+                    type="radio"
+                    checked={subscriber === i}
+                    onChange={() => setSubscriber(i)}
+                  />
+                </div>
+                <div className="flex justify-center items-center">
+                  <Select>
+                    <SelectTrigger>
+                      <SelectValue placeholder="Primary" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectGroup>
+                        <SelectLabel>Options</SelectLabel>
+                        <SelectItem value="primary">Primary</SelectItem>
+                        <SelectItem value="secondary">Secondary</SelectItem>
+                      </SelectGroup>
+                    </SelectContent>
+                  </Select>
+                </div>
+                <div className="flex justify-center items-center">
+                  <Input placeholder="Ins. ID/SSN" />
+                </div>
+              </Fragment>
+            );
+          })}
         </div>
         <div className="space-y-2">
           <div className="flex justify-between">
