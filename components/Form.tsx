@@ -30,19 +30,19 @@ interface HouseHoldMember {
   covered: boolean;
   name: string;
   preferredName: string;
-  subscriber: boolean;
   insurance: string;
   id: number;
+  dependent: boolean;
 }
 
 function Form() {
   const [subscriber, setSubscriber] = useState<number>(0);
   // prettier-ignore
-  const household = [
-    { faveColor: "bg-[#C985FF]", covered: true, name: "Jerome Bell", preferredName: "Rome", insurance: "primary", id: "1111111111" },
-    { faveColor: "bg-[#5B8AF0]", covered: true, name: "Stacy Bell", preferredName: "Stacy", insurance: "primary", id: "1111111111" },
-    { faveColor: "bg-[#EB8F24]", covered: false, name: "Rebecca Bell", preferredName: "Becca", insurance: "", id: "1111111111" },
-  ];
+  const household: HouseHoldMember[] = [
+    { faveColor: "bg-[#C985FF]", covered: true, name: "Jerome Bell", preferredName: "Rome", insurance: "primary", id: 1111111111, dependent: false },
+    { faveColor: "bg-[#5B8AF0]", covered: true, name: "Stacy Bell", preferredName: "Stacy", insurance: "primary", id: 1111111111, dependent: false },
+    { faveColor: "bg-[#EB8F24]", covered: false, name: "Rebecca Bell", preferredName: "Becca", insurance: "", id: 1111111111, dependent: true },
+ ];
   return (
     <div className="container mx-auto py-8 px-4 text-semibold sans text-gray-500">
       <form className="flex flex-col space-y-6 max-w-32 border border-gray-300 p-4 m-4 rounded-md">
@@ -158,7 +158,7 @@ function Form() {
                   <div className="flex justify-center items-center">
                     <Select
                       value={member.insurance}
-                      disabled={member.insurance.length < 1}
+                      disabled={member.dependent}
                     >
                       <SelectTrigger>
                         <SelectValue />
@@ -173,7 +173,10 @@ function Form() {
                     </Select>
                   </div>
                   <div className="flex justify-center items-center">
-                    <Input placeholder="Ins. ID/SSN" />
+                    <Input
+                      placeholder="Ins. ID/SSN"
+                      disabled={member.dependent}
+                    />
                   </div>
                 </Fragment>
               );
@@ -203,7 +206,6 @@ const HouseHoldMember = ({
   faveColor,
   name,
   preferredName,
-  subscriber,
   insurance,
   id,
 }: HouseHoldMember) => {
