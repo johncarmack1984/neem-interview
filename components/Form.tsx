@@ -187,7 +187,10 @@ const HouseholdMember = ({
         </Select>
       </div>
       <div className="flex justify-center items-center">
-        <Input placeholder="Ins. ID/SSN" disabled={member.dependent} />
+        <Input
+          placeholder={member.dependent ? "" : "Ins. ID/SSN"}
+          disabled={member.dependent}
+        />
       </div>
     </>
   );
