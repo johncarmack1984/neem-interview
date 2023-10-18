@@ -34,7 +34,7 @@ const HouseholdMember = ({
         className="self-center justify-self-center text-center"
       />
 
-      <div className="flex flex-nowrap items-center justify-start gap-2">
+      <div className="flex flex-wrap items-center justify-start gap-2 md:flex-nowrap">
         <Avatar
           className={cn(
             member.faveColor,
@@ -43,7 +43,7 @@ const HouseholdMember = ({
         >
           <AvatarFallback>{initials}</AvatarFallback>
         </Avatar>
-        <span className="whitespace-nowrap text-sm font-light capitalize">
+        <span className="text-sm font-light capitalize md:whitespace-nowrap">
           {member.name}
         </span>
         <span className="text-sm text-zinc-500 dark:text-zinc-400">
