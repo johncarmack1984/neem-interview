@@ -100,7 +100,10 @@ function Form() {
           </Button>
         </div>
         <h2 className="text-xl font-semibold">Household</h2>
-        <RadioGroup value={subscriber.toString()}>
+        <RadioGroup
+          value={subscriber.toString()}
+          onValueChange={(e) => setSubscriber(parseInt(e))}
+        >
           <div className="grid grid-cols-5 gap-2 font-light text-xs text-left">
             <div className="">
               <span className="mr-1">Covered</span>
@@ -147,12 +150,6 @@ function Form() {
                     </span>
                   </div>
                   <div className="flex justify-center items-center">
-                    {/* <input
-                    type="radio"
-
-                    
-                  /> */}
-
                     <RadioGroupItem
                       value={i.toString()}
                       className="data-[state=checked]:text-[#70C4BB] border-[#70C4BB] border-2 h-5 w-5"
