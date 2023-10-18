@@ -24,7 +24,7 @@ import InformationCircleSolid from "@/icons/information-circle-solid";
 import { cn } from "@/lib/utils";
 import { Fragment, useEffect, useState } from "react";
 import { RadioGroup, RadioGroupItem } from "./ui/radio-group";
-import { ChevronLeft } from "lucide-react";
+import { ChevronLeft, X } from "lucide-react";
 
 interface HouseHoldMember {
   faveColor: string;
@@ -50,21 +50,7 @@ function Form() {
         <div className="flex items-center justify-between">
           <h1 className="text-2xl font-medium">Patient Insurance</h1>
           <Button aria-label="Close" variant="ghost">
-            <svg
-              className=" h-6 w-6"
-              fill="none"
-              height="24"
-              stroke="currentColor"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              viewBox="0 0 24 24"
-              width="24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path d="M18 6 6 18" />
-              <path d="m6 6 12 12" />
-            </svg>
+            <X />
           </Button>
         </div>
         <div className="space-y-4">
@@ -107,7 +93,7 @@ function Form() {
           onValueChange={(e) => setSubscriber(parseInt(e))}
         >
           <div className="grid grid-cols-5 gap-2 font-light text-xs text-left">
-            <div className="">
+            <div className="max-w-fit">
               <span className="mr-1">Covered</span>
               <TooltipProvider>
                 <Tooltip>
@@ -129,17 +115,16 @@ function Form() {
               const initials = firstName[0] + lastName[0];
               return (
                 <Fragment key={i}>
-                  <div className="flex justify-center items-center">
-                    <Checkbox
-                      checked={member.covered}
-                      onChange={() => (member.covered = !member.covered)}
-                    />
-                  </div>
+                  <Checkbox
+                    checked={member.covered}
+                    onChange={() => (member.covered = !member.covered)}
+                    className="text-center justify-self-center self-center"
+                  />
                   <div className="flex flex-wrap justify-start items-center gap-2">
                     <Avatar
                       className={cn(
                         member.faveColor,
-                        "rounded-full p-1 text-xs text-white"
+                        "rounded-full p-1 text-xs text-white inline"
                       )}
                     >
                       <AvatarFallback>{initials}</AvatarFallback>
@@ -151,12 +136,12 @@ function Form() {
                       ({member.preferredName})
                     </span>
                   </div>
-                  <div className="flex justify-center items-center">
-                    <RadioGroupItem
-                      value={i.toString()}
-                      className="data-[state=checked]:text-[#70C4BB] border-[#70C4BB] border-2 h-5 w-5"
-                    />
-                  </div>
+
+                  <RadioGroupItem
+                    value={i.toString()}
+                    className="data-[state=checked]:text-[#70C4BB] border-[#70C4BB] border-2 h-5 w-5 text-center justify-self-center self-center"
+                  />
+
                   <div className="flex justify-center items-center">
                     <Select
                       value={member.insurance}
