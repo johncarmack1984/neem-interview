@@ -52,15 +52,33 @@ function Form() {
           </div>
           <div className="space-y-2">
             <Label htmlFor="employer">Employer</Label>
-            <Input id="employer" placeholder="Employer" required />
+            <Input
+              id="employer"
+              value="Company F"
+              placeholder="Employer"
+              Icon={X}
+              required
+            />
           </div>
           <div className="space-y-2">
             <Label htmlFor="carrier">Carrier</Label>
-            <Input id="carrier" placeholder="Carrier" required />
+            <Input
+              id="carrier"
+              value="Delta Insurance"
+              placeholder="Carrier"
+              Icon={X}
+              required
+            />
           </div>
           <div className="space-y-2">
             <Label htmlFor="plan">Plan</Label>
-            <Input id="plan" placeholder="Plan" required />
+            <Input
+              id="plan"
+              value="Dental Primary"
+              placeholder="Plan"
+              Icon={X}
+              required
+            />
           </div>
         </div>
         <div className="flex gap-4">
