@@ -24,6 +24,7 @@ import InformationCircleSolid from "@/icons/information-circle-solid";
 import { cn } from "@/lib/utils";
 import { Fragment, useEffect, useState } from "react";
 import { RadioGroup, RadioGroupItem } from "./ui/radio-group";
+import { ChevronLeft } from "lucide-react";
 
 interface HouseHoldMember {
   faveColor: string;
@@ -44,10 +45,10 @@ function Form() {
     { faveColor: "bg-[#EB8F24]", covered: false, name: "Rebecca Bell", preferredName: "Becca", insurance: "", id: 1111111111, dependent: true },
  ];
   return (
-    <div className="container mx-auto py-8 px-4 text-semibold sans text-gray-500">
+    <div className="container mx-auto py-8 px-4">
       <form className="flex flex-col space-y-6 max-w-32 border border-gray-300 p-4 m-4 rounded-md">
         <div className="flex items-center justify-between">
-          <h1 className="text-2xl font-semibold">Patient Insurance</h1>
+          <h1 className="text-2xl font-medium">Patient Insurance</h1>
           <Button aria-label="Close" variant="ghost">
             <svg
               className=" h-6 w-6"
@@ -70,7 +71,7 @@ function Form() {
           <div className="space-y-3">
             <div className="flex justify-between">
               <Label htmlFor="search-insurance">Insurance</Label>
-              <span className="text-xs">+Add new...</span>
+              <span className="text-xs text-muted-foreground">+Add new</span>
             </div>
             <Input
               id="search-insurance"
@@ -92,14 +93,15 @@ function Form() {
           </div>
         </div>
         <div className="flex gap-4">
-          <Button className="w-full" variant="outline">
-            Insurance details
+          <Button disabled className="w-full font-normal" variant="outline">
+            <ChevronLeft size={16} className="mr-2" /> Insurance details
           </Button>
-          <Button className="w-full" variant="outline">
+          <Button disabled className="w-full font-normal" variant="outline">
+            <ChevronLeft size={16} className="mr-2" />
             Coverage and Deductible
           </Button>
         </div>
-        <h2 className="text-xl font-semibold">Household</h2>
+        <h2 className="text-lg font-medium">Household</h2>
         <RadioGroup
           value={subscriber.toString()}
           onValueChange={(e) => setSubscriber(parseInt(e))}
