@@ -37,7 +37,6 @@ const HouseholdMember = ({
         onCheckedChange={() => setCovered(!covered)}
         className="self-center justify-self-center text-center"
       />
-
       <div className="flex flex-wrap items-center justify-start gap-2 md:flex-nowrap">
         <Avatar
           className={cn(
@@ -64,7 +63,7 @@ const HouseholdMember = ({
           disabled={member.dependent}
           onValueChange={(e) => setInsurance(e)}
         >
-          <SelectTrigger>
+          <SelectTrigger className="overflow-hidden">
             <SelectValue />
           </SelectTrigger>
           <SelectContent>
