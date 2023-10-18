@@ -1,12 +1,6 @@
 import "@/styles/tailwind.css";
 import type { AppProps } from "next/app";
-import { Inter, Rubik } from "@next/font/google";
-
-const interFont = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-  display: "swap",
-});
+import { Rubik } from "@next/font/google";
 
 const rubikFont = Rubik({
   subsets: ["latin"],
@@ -16,7 +10,7 @@ const rubikFont = Rubik({
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <div className={`${interFont.variable} ${rubikFont.variable} font-sans`}>
+    <div className={`${rubikFont.variable} font-sans`}>
       <Component {...pageProps} />
     </div>
   );
