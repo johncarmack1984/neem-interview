@@ -92,7 +92,7 @@ function Form() {
           value={subscriber.toString()}
           onValueChange={(e) => setSubscriber(parseInt(e))}
         >
-          <div className="grid grid-cols-5 gap-2 font-light text-xs text-left">
+          <div className="grid grid-cols-5 grid-flow-row-dense gap-2 font-light text-xs text-left">
             <div className="max-w-fit">
               <span className="mr-1">Covered</span>
               <TooltipProvider>
@@ -118,7 +118,9 @@ function Form() {
         <div className="space-y-2">
           <div className="flex justify-between">
             <Label htmlFor="household-member">Household member</Label>
-            <span className="text-xs">Add new...</span>
+            <span className="text-xs text-muted-foreground font-light">
+              +Add new member
+            </span>
           </div>
           <Input id="household-member" placeholder="Search..." required />
         </div>
@@ -168,7 +170,7 @@ const HouseholdMember = ({
       </div>
       <RadioGroupItem
         value={index.toString()}
-        className="data-[state=checked]:text-[#70C4BB] border-[#70C4BB] border-2 h-5 w-5 text-center justify-self-center self-center"
+        className="data-[state=checked]:text-[#70C4BB] border-[#70C4BB] border-2 text-center justify-self-center self-center"
       />
       <div className="flex justify-center items-center">
         <Select value={member.insurance} disabled={member.dependent}>
