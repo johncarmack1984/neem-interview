@@ -53,7 +53,7 @@ function Form() {
             <X />
           </Button>
         </div>
-        <div className="space-y-4">
+        <div className="space-y-4 font-light tracking-wide text-2xl">
           <div className="space-y-3">
             <div className="flex justify-between">
               <Label htmlFor="search-insurance">Insurance</Label>
@@ -145,6 +145,7 @@ const HouseholdMember = ({
   const [firstName, lastName] = member.name.split(" ");
   const initials = firstName[0] + lastName[0];
   const [covered, setCovered] = useState(member.covered);
+  const [insurance, setInsurance] = useState(member.insurance);
   return (
     <>
       <Checkbox
@@ -162,10 +163,10 @@ const HouseholdMember = ({
         >
           <AvatarFallback>{initials}</AvatarFallback>
         </Avatar>
-        <span className="font-light capitalize whitespace-nowrap">
+        <span className="font-light text-sm capitalize whitespace-nowrap">
           {member.name}
         </span>
-        <span className="text-sm text-zinc-500 dark:text-zinc-400 font-light">
+        <span className="text-sm text-zinc-500 dark:text-zinc-400">
           ({member.preferredName})
         </span>
       </div>
@@ -174,7 +175,11 @@ const HouseholdMember = ({
         className="data-[state=checked]:text-[#70C4BB] border-[#70C4BB] border-2 text-center justify-self-center self-center"
       />
       <div className="flex justify-center items-center">
-        <Select value={member.insurance} disabled={member.dependent}>
+        <Select
+          value={insurance}
+          disabled={member.dependent}
+          onValueChange={() => setInsurance}
+        >
           <SelectTrigger>
             <SelectValue />
           </SelectTrigger>
