@@ -41,7 +41,7 @@ const HouseholdMember = ({
         <Avatar
           className={cn(
             member.faveColor,
-            "inline rounded-full p-1 text-xs text-white",
+            "hidden rounded-full p-1 text-xs text-white sm:inline",
           )}
         >
           <AvatarFallback>{initials}</AvatarFallback>
@@ -49,7 +49,7 @@ const HouseholdMember = ({
         <span className="text-sm font-light capitalize md:whitespace-nowrap">
           {member.name}
         </span>
-        <span className="text-sm text-zinc-500 dark:text-zinc-400">
+        <span className="hidden text-sm text-zinc-500 dark:text-zinc-400 md:inline">
           ({member.preferredName})
         </span>
       </div>
