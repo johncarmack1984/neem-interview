@@ -1,6 +1,6 @@
 import { useState } from "react";
 import InformationCircleSolid from "@/icons/information-circle-solid";
-import { ChevronLeft, X } from "lucide-react";
+import { ChevronLeft, SearchIcon, X } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -34,13 +34,20 @@ function Form() {
         <div className="space-y-4 text-2xl font-light tracking-wide">
           <div className="space-y-3">
             <div className="flex justify-between">
-              <Label htmlFor="search-insurance">Insurance</Label>
+              <Label
+                className="text-base font-medium"
+                htmlFor="search-insurance"
+              >
+                Insurance
+              </Label>
               <span className="text-xs text-muted-foreground">+Add new</span>
             </div>
             <Input
               id="search-insurance"
-              placeholder="Search insurance..."
+              placeholder="Search insurance"
+              className="tracking-wide"
               required
+              Icon={SearchIcon}
             />
           </div>
           <div className="space-y-2">
@@ -95,7 +102,9 @@ function Form() {
         </RadioGroup>
         <div className="space-y-2">
           <div className="flex justify-between">
-            <Label htmlFor="household-member">Household member</Label>
+            <Label className="text-xs font-light" htmlFor="household-member">
+              Household member
+            </Label>
             <span className="text-xs font-light text-muted-foreground">
               +Add new member
             </span>
