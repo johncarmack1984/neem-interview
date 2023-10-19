@@ -107,12 +107,12 @@ function Form() {
           value={subscriber.toString()}
           onValueChange={(e) => setSubscriber(parseInt(e))}
         >
-          <div className="grid grid-cols-5 gap-2 text-left text-xs font-light">
+          <div className="grid grid-cols-5 gap-x-1 gap-y-2 text-left text-xs font-light md:gap-2">
             <div>
               <span className="mr-1">Covered</span>
               <TooltipProvider>
                 <Tooltip>
-                  <TooltipTrigger>
+                  <TooltipTrigger onMouseDown={() => {}}>
                     <InformationCircleSolid />
                   </TooltipTrigger>
                   <TooltipContent>
