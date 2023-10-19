@@ -53,42 +53,35 @@ const HouseholdMember = ({
           ({member.preferredName})
         </span>
       </div>
-      <RadioGroupItem
-        value={index.toString()}
-        className="self-center justify-self-center border-2 border-border text-center data-[state=checked]:border-[#70C4BB] data-[state=checked]:text-[#70C4BB]"
+      <RadioGroupItem value={index.toString()} className="" />
+      <Select
+        value={insurance}
+        disabled={member.dependent}
+        onValueChange={(e) => setInsurance(e)}
+      >
+        <SelectTrigger className="col-span-2 flex items-center overflow-hidden">
+          <SelectValue />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectGroup>
+            <SelectLabel>Options</SelectLabel>
+            {Object.entries(insuranceOptions).map(([k, v], i) => {
+              return (
+                <SelectItem key={i} value={k}>
+                  {v}
+                </SelectItem>
+              );
+            })}
+          </SelectGroup>
+        </SelectContent>
+      </Select>
+      <Input
+        placeholder={member.dependent ? "" : "Ins. ID/SSN"}
+        disabled={member.dependent}
+        className="col-span-2 flex w-full items-center justify-center disabled:bg-muted"
+        inputMode="numeric"
+        pattern="[0-9]*"
       />
-      <div className="col-span-2 flex items-center justify-center">
-        <Select
-          value={insurance}
-          disabled={member.dependent}
-          onValueChange={(e) => setInsurance(e)}
-        >
-          <SelectTrigger className="overflow-hidden">
-            <SelectValue />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectGroup>
-              <SelectLabel>Options</SelectLabel>
-              {Object.entries(insuranceOptions).map(([k, v], i) => {
-                return (
-                  <SelectItem key={i} value={k}>
-                    {v}
-                  </SelectItem>
-                );
-              })}
-            </SelectGroup>
-          </SelectContent>
-        </Select>
-      </div>
-      <div className="col-span-2 flex items-center justify-center ">
-        <Input
-          placeholder={member.dependent ? "" : "Ins. ID/SSN"}
-          disabled={member.dependent}
-          className="w-full disabled:bg-muted"
-          inputMode="numeric"
-          pattern="[0-9]*"
-        />
-      </div>
     </>
   );
 };

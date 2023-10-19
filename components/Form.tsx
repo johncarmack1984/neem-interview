@@ -110,11 +110,11 @@ function Form() {
           onValueChange={(e) => setSubscriber(parseInt(e))}
         >
           <div className="grid grid-cols-7 gap-x-1 gap-y-2 text-left text-xs font-light md:gap-4">
-            <div className="flex items-center justify-center">
+            <div className="flex items-end justify-center">
               <span className="mr-1">Covered</span>
               <TooltipProvider>
                 <Tooltip>
-                  <TooltipTrigger className="hidden md:block">
+                  <TooltipTrigger className="hidden sm:block">
                     <InformationCircleSolid className="h-4 w-4 fill-[#9DA7BE]" />
                   </TooltipTrigger>
                   <TooltipContent>
@@ -123,10 +123,10 @@ function Form() {
                 </Tooltip>
               </TooltipProvider>
             </div>
-            <div>Name</div>
-            <div className="text-center">Subscriber</div>
-            <div className="col-span-2">Insurance</div>
-            <div className="col-span-2">ID</div>
+            <div className="flex items-end">Name</div>
+            <div className="hyphens-manual text-center">Sub&shy;scriber</div>
+            <div className="col-span-2 flex items-end">Insurance</div>
+            <div className="col-span-2 flex items-end">ID</div>
             {household.map((member, i) => (
               <HouseholdMember key={i} index={i} member={member} />
             ))}
