@@ -85,6 +85,8 @@ const HouseholdMember = ({
           placeholder={member.dependent ? "" : "Ins. ID/SSN"}
           disabled={member.dependent}
           className="w-full disabled:bg-muted"
+          inputMode="numeric"
+          pattern="[0-9]*"
         />
       </div>
     </>
