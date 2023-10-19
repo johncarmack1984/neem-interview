@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/tooltip";
 import HouseholdMember from "./household-member";
 import { RadioGroup } from "./ui/radio-group";
+import { Separator } from "./ui/separator";
 
 function Form() {
   const [subscriber, setSubscriber] = useState<number>(0);
@@ -31,6 +32,7 @@ function Form() {
             <X />
           </Button>
         </div>
+        <Separator className="h-[1px] bg-input" />
         <div className="space-y-2 text-2xl font-light tracking-wide">
           <div className="space-y-2">
             <div className="flex justify-between">
@@ -148,7 +150,7 @@ function Form() {
           />
         </div>
         <Button
-          className="w-[129px] self-end whitespace-nowrap bg-[#70C4BB] text-white"
+          className="w-full self-end whitespace-nowrap bg-[#70C4BB] text-white md:w-[129px]"
           type="submit"
         >
           Save and Close
