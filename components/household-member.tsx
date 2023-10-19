@@ -47,7 +47,7 @@ const HouseholdMember = ({
           <AvatarFallback>{initials}</AvatarFallback>
         </Avatar>
         <span className="text-sm font-light capitalize md:whitespace-nowrap">
-          {member.name}
+          {firstName} <span className="hidden md:inline">{lastName}</span>
         </span>
         <span className="hidden text-sm text-zinc-500 dark:text-zinc-400 md:inline">
           ({member.preferredName})

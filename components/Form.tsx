@@ -112,7 +112,7 @@ function Form() {
               <span className="mr-1">Covered</span>
               <TooltipProvider>
                 <Tooltip>
-                  <TooltipTrigger onMouseDown={() => {}}>
+                  <TooltipTrigger className="hidden md:block">
                     <InformationCircleSolid className="h-4 w-4 fill-[#9DA7BE]" />
                   </TooltipTrigger>
                   <TooltipContent>
@@ -141,10 +141,10 @@ function Form() {
           </div>
           <Input
             id="household-member"
-            placeholder="Search..."
+            className="font-light"
+            placeholder="Select household member"
             Icon={SearchIcon}
             required
-            type="number"
           />
         </div>
         <Button
