@@ -23,7 +23,7 @@
     --destructive-foreground: 0 0% 98%;
     --border: #9da7be;
     --input: #eff1f5;
-    --ring: 240 5.9% 10%;
+    --ring: #70c4bb;
     --radius: 6px;
   }
 
@@ -46,7 +46,7 @@
     --destructive-foreground: 0 0% 98%;
     --border: #9da7be;
     --input: #eff1f5;
-    --ring: 240 4.9% 83.9%;
+    --ring: #70c4bb;
   }
 }
 
