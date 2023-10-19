@@ -87,21 +87,21 @@ function Form() {
             />
           </div>
         </div>
-        <div className="flex gap-4">
+        <div className="flex flex-col gap-4 md:flex-row">
           <Button
             disabled
             className="w-full border-[#C2C8D6] py-6 font-normal"
             variant="outline"
           >
-            <ChevronLeft size={16} className="mr-2" /> Insurance details
+            <ChevronLeft size={16} className="mr-2 h-4 w-4" /> Insurance details
           </Button>
           <Button
             disabled
-            className="w-full border-muted-foreground py-6 font-normal"
+            className="w-full whitespace-nowrap border-muted-foreground py-6 font-normal"
             variant="outline"
           >
-            <ChevronLeft size={16} className="mr-2" />
-            Coverage and Deductible
+            <ChevronLeft size={16} className="mr-2 h-4 w-4" />
+            Coverage and Deductibles
           </Button>
         </div>
         <h2 className="text-md font-medium">Household</h2>
