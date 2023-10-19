@@ -1,10 +1,12 @@
+import { cn } from "@/lib/utils";
+
 function InformationCircleSolid({ className }: { className?: string }) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
       fill="#9DA7BE"
-      className="w-3 h-3 fill-[#9DA7BE]"
+      className={cn(className)}
     >
       <path
         fillRule="evenodd"

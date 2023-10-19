@@ -88,14 +88,14 @@ function Form() {
         <div className="flex gap-4">
           <Button
             disabled
-            className="w-full py-6 font-normal"
+            className="w-full border-[#C2C8D6] py-6 font-normal"
             variant="outline"
           >
             <ChevronLeft size={16} className="mr-2" /> Insurance details
           </Button>
           <Button
             disabled
-            className="w-full py-6 font-normal"
+            className="w-full border-muted-foreground py-6 font-normal"
             variant="outline"
           >
             <ChevronLeft size={16} className="mr-2" />
@@ -108,12 +108,12 @@ function Form() {
           onValueChange={(e) => setSubscriber(parseInt(e))}
         >
           <div className="grid grid-cols-5 gap-x-1 gap-y-2 text-left text-xs font-light md:gap-4">
-            <div>
+            <div className="flex items-center justify-center">
               <span className="mr-1">Covered</span>
               <TooltipProvider>
                 <Tooltip>
                   <TooltipTrigger onMouseDown={() => {}}>
-                    <InformationCircleSolid />
+                    <InformationCircleSolid className="h-4 w-4 fill-[#9DA7BE]" />
                   </TooltipTrigger>
                   <TooltipContent>
                     <p>Is this person covered?</p>
