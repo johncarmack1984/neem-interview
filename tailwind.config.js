@@ -12,8 +12,8 @@ module.exports = {
         sans: ["var(--font-rubik)", ...defaultTheme.fontFamily.sans],
       },
       colors: {
-        border: "hsl(var(--border))",
-        input: "hsl(var(--input))",
+        border: "var(--border)",
+        input: "var(--input)",
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "var(--foreground)",
@@ -30,7 +30,7 @@ module.exports = {
           foreground: "hsl(var(--destructive-foreground))",
         },
         muted: {
-          DEFAULT: "hsl(var(--muted))",
+          DEFAULT: "var(--muted)",
           foreground: "var(--muted-foreground)",
         },
         accent: {

@@ -24,7 +24,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           ref={ref}
           {...props}
         />
-        {Icon ? <Icon className="mr-3 stroke-muted-foreground" /> : null}
+        {Icon ? <Icon className="mr-3 stroke-border" /> : null}
       </div>
     );
   },

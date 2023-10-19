@@ -35,7 +35,7 @@ const HouseholdMember = ({
       <Checkbox
         checked={covered}
         onCheckedChange={() => setCovered(!covered)}
-        className="self-center justify-self-center text-center"
+        className="self-center justify-self-center border-2  border-border text-center data-[state=checked]:border-0 data-[state=checked]:border-[#70C4BB]"
       />
       <div className="flex flex-wrap items-center justify-start gap-2 md:flex-nowrap">
         <Avatar
@@ -55,7 +55,7 @@ const HouseholdMember = ({
       </div>
       <RadioGroupItem
         value={index.toString()}
-        className="self-center justify-self-center border-2 border-[#70C4BB] text-center data-[state=checked]:text-[#70C4BB]"
+        className="self-center justify-self-center border-2 border-border text-center data-[state=checked]:border-[#70C4BB] data-[state=checked]:text-[#70C4BB]"
       />
       <div className="flex items-center justify-center">
         <Select
