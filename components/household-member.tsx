@@ -41,7 +41,7 @@ const HouseholdMember = ({
         <Avatar
           className={cn(
             member.faveColor,
-            "hidden rounded-full p-1 text-xs text-white sm:inline",
+            "hidden rounded-full p-1 text-xs text-white md:inline",
           )}
         >
           <AvatarFallback>{initials}</AvatarFallback>
@@ -49,7 +49,7 @@ const HouseholdMember = ({
         <span className="text-sm font-light capitalize md:whitespace-nowrap">
           {firstName} <span className="hidden md:inline">{lastName}</span>
         </span>
-        <span className="hidden text-sm text-zinc-500 dark:text-zinc-400 md:inline">
+        <span className="hidden text-sm text-zinc-500 dark:text-zinc-400 lg:inline">
           ({member.preferredName})
         </span>
       </div>
@@ -57,7 +57,7 @@ const HouseholdMember = ({
         value={index.toString()}
         className="self-center justify-self-center border-2 border-border text-center data-[state=checked]:border-[#70C4BB] data-[state=checked]:text-[#70C4BB]"
       />
-      <div className="flex items-center justify-center">
+      <div className="col-span-2 flex items-center justify-center">
         <Select
           value={insurance}
           disabled={member.dependent}
@@ -80,7 +80,7 @@ const HouseholdMember = ({
           </SelectContent>
         </Select>
       </div>
-      <div className="flex items-center justify-center">
+      <div className="col-span-2 flex items-center justify-center ">
         <Input
           placeholder={member.dependent ? "" : "Ins. ID/SSN"}
           disabled={member.dependent}

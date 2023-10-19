@@ -109,7 +109,7 @@ function Form() {
           value={subscriber.toString()}
           onValueChange={(e) => setSubscriber(parseInt(e))}
         >
-          <div className="grid grid-cols-5 gap-x-1 gap-y-2 text-left text-xs font-light md:gap-4">
+          <div className="grid grid-cols-7 gap-x-1 gap-y-2 text-left text-xs font-light md:gap-4">
             <div className="flex items-center justify-center">
               <span className="mr-1">Covered</span>
               <TooltipProvider>
@@ -125,8 +125,8 @@ function Form() {
             </div>
             <div>Name</div>
             <div className="text-center">Subscriber</div>
-            <div>Insurance</div>
-            <div>ID</div>
+            <div className="col-span-2">Insurance</div>
+            <div className="col-span-2">ID</div>
             {household.map((member, i) => (
               <HouseholdMember key={i} index={i} member={member} />
             ))}
