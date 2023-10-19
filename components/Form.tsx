@@ -144,6 +144,7 @@ function Form() {
             placeholder="Search..."
             Icon={SearchIcon}
             required
+            type="number"
           />
         </div>
         <Button
